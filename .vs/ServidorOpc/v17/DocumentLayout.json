@@ -7,15 +7,22 @@
       "RelativeMoniker": "D:0:0:{784A6EA9-4883-4EC4-AB6B-EFF45C3C1D4B}|ServidorOpc\\ServidorOpc.csproj|solutionrelative:servidoropc\\servermainform.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{784A6EA9-4883-4EC4-AB6B-EFF45C3C1D4B}|ServidorOpc\\ServidorOpc.csproj|c:\\users\\usuario\\source\\repos\\servidoropc\\servidoropc\\factories\\opcuafactoryconfig.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "AbsoluteMoniker": "D:0:0:{784A6EA9-4883-4EC4-AB6B-EFF45C3C1D4B}|ServidorOpc\\ServidorOpc.csproj|c:\\users\\usuario\\source\\repos\\servidoropc\\servidoropc\\servermainform.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
+      "RelativeMoniker": "D:0:0:{784A6EA9-4883-4EC4-AB6B-EFF45C3C1D4B}|ServidorOpc\\ServidorOpc.csproj|solutionrelative:servidoropc\\servermainform.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\Usuario\\AppData\\Local\\Temp\\.vsdbgsrc\\3678842da19a5ec0b5156d121c173e610b8d846e4ac7ad5203756a8514cfb4fd\\SerialStream.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{784A6EA9-4883-4EC4-AB6B-EFF45C3C1D4B}|ServidorOpc\\ServidorOpc.csproj|C:\\Users\\Usuario\\source\\repos\\ServidorOpc\\servidoropc\\factories\\opcuafactoryconfig.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{784A6EA9-4883-4EC4-AB6B-EFF45C3C1D4B}|ServidorOpc\\ServidorOpc.csproj|solutionrelative:servidoropc\\factories\\opcuafactoryconfig.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{784A6EA9-4883-4EC4-AB6B-EFF45C3C1D4B}|ServidorOpc\\ServidorOpc.csproj|c:\\users\\usuario\\source\\repos\\servidoropc\\servidoropc\\factories\\opcconnection.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "AbsoluteMoniker": "D:0:0:{784A6EA9-4883-4EC4-AB6B-EFF45C3C1D4B}|ServidorOpc\\ServidorOpc.csproj|C:\\Users\\Usuario\\source\\repos\\ServidorOpc\\servidoropc\\factories\\opcconnection.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{784A6EA9-4883-4EC4-AB6B-EFF45C3C1D4B}|ServidorOpc\\ServidorOpc.csproj|solutionrelative:servidoropc\\factories\\opcconnection.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{784A6EA9-4883-4EC4-AB6B-EFF45C3C1D4B}|ServidorOpc\\ServidorOpc.csproj|c:\\users\\usuario\\source\\repos\\servidoropc\\servidoropc\\servidoropc.csproj||{FA3CD31E-987B-443A-9B81-186104E8DAC1}|",
+      "AbsoluteMoniker": "D:0:0:{784A6EA9-4883-4EC4-AB6B-EFF45C3C1D4B}|ServidorOpc\\ServidorOpc.csproj|C:\\Users\\Usuario\\source\\repos\\ServidorOpc\\servidoropc\\servidoropc.csproj||{FA3CD31E-987B-443A-9B81-186104E8DAC1}|",
       "RelativeMoniker": "D:0:0:{784A6EA9-4883-4EC4-AB6B-EFF45C3C1D4B}|ServidorOpc\\ServidorOpc.csproj|solutionrelative:servidoropc\\servidoropc.csproj||{FA3CD31E-987B-443A-9B81-186104E8DAC1}|"
     }
   ],
@@ -26,38 +33,63 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 3,
+          "SelectedChildIndex": 5,
           "Children": [
             {
               "$type": "Document",
               "DocumentIndex": 2,
+              "Title": "SerialStream.cs",
+              "DocumentMoniker": "C:\\Users\\Usuario\\AppData\\Local\\Temp\\.vsdbgsrc\\3678842da19a5ec0b5156d121c173e610b8d846e4ac7ad5203756a8514cfb4fd\\SerialStream.cs",
+              "RelativeDocumentMoniker": "..\\..\\..\\AppData\\Local\\Temp\\.vsdbgsrc\\3678842da19a5ec0b5156d121c173e610b8d846e4ac7ad5203756a8514cfb4fd\\SerialStream.cs",
+              "ToolTip": "C:\\Users\\Usuario\\AppData\\Local\\Temp\\.vsdbgsrc\\3678842da19a5ec0b5156d121c173e610b8d846e4ac7ad5203756a8514cfb4fd\\SerialStream.cs [Somente Leitura]",
+              "RelativeToolTip": "..\\..\\..\\AppData\\Local\\Temp\\.vsdbgsrc\\3678842da19a5ec0b5156d121c173e610b8d846e4ac7ad5203756a8514cfb4fd\\SerialStream.cs [Somente Leitura]",
+              "ViewState": "AQIAAJAAAAAAAAAAAAAvwMoAAAAYAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-06-22T00:59:48.492Z",
+              "EditorCaption": " [Somente Leitura]"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "ServerMainForm.cs [Projeto]",
+              "DocumentMoniker": "C:\\Users\\Usuario\\source\\repos\\ServidorOpc\\ServidorOpc\\ServerMainForm.cs",
+              "RelativeDocumentMoniker": "ServidorOpc\\ServerMainForm.cs",
+              "ToolTip": "C:\\Users\\Usuario\\source\\repos\\ServidorOpc\\ServidorOpc\\ServerMainForm.cs [Projeto]",
+              "RelativeToolTip": "ServidorOpc\\ServerMainForm.cs [Projeto]",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-06-21T23:49:05.943Z",
+              "EditorCaption": " [Projeto]"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
               "Title": "OpcConnection.cs",
               "DocumentMoniker": "C:\\Users\\Usuario\\source\\repos\\ServidorOpc\\ServidorOpc\\Factories\\OpcConnection.cs",
               "RelativeDocumentMoniker": "ServidorOpc\\Factories\\OpcConnection.cs",
               "ToolTip": "C:\\Users\\Usuario\\source\\repos\\ServidorOpc\\ServidorOpc\\Factories\\OpcConnection.cs",
               "RelativeToolTip": "ServidorOpc\\Factories\\OpcConnection.cs",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAkAAAAPAAAA",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAgAAAAAAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2026-06-16T23:34:41.754Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 1,
+              "DocumentIndex": 3,
               "Title": "OpcUAFactoryConfig.cs",
               "DocumentMoniker": "C:\\Users\\Usuario\\source\\repos\\ServidorOpc\\ServidorOpc\\Factories\\OpcUAFactoryConfig.cs",
               "RelativeDocumentMoniker": "ServidorOpc\\Factories\\OpcUAFactoryConfig.cs",
               "ToolTip": "C:\\Users\\Usuario\\source\\repos\\ServidorOpc\\ServidorOpc\\Factories\\OpcUAFactoryConfig.cs",
               "RelativeToolTip": "ServidorOpc\\Factories\\OpcUAFactoryConfig.cs",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAQAAAAjAAAA",
+              "ViewState": "AQIAAAgAAAAAAAAAAAAQwAkAAAAIAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2026-06-16T23:29:36.614Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 3,
-              "Title": "ServidorOpc",
+              "DocumentIndex": 5,
+              "Title": "ServidorOpc.csproj",
               "DocumentMoniker": "C:\\Users\\Usuario\\source\\repos\\ServidorOpc\\ServidorOpc\\ServidorOpc.csproj",
               "RelativeDocumentMoniker": "ServidorOpc\\ServidorOpc.csproj",
               "ToolTip": "C:\\Users\\Usuario\\source\\repos\\ServidorOpc\\ServidorOpc\\ServidorOpc.csproj",
@@ -75,7 +107,7 @@
               "RelativeDocumentMoniker": "ServidorOpc\\ServerMainForm.cs",
               "ToolTip": "C:\\Users\\Usuario\\source\\repos\\ServidorOpc\\ServidorOpc\\ServerMainForm.cs",
               "RelativeToolTip": "ServidorOpc\\ServerMainForm.cs",
-              "ViewState": "AQIAAA0AAAAAAAAAAAAgwCQAAAArAAAA",
+              "ViewState": "AQIAACAAAAAAAAAAAAAwwCgAAABFAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2026-06-08T00:02:50.143Z",
               "EditorCaption": ""

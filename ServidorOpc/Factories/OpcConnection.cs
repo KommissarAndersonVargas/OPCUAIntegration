@@ -9,7 +9,7 @@ namespace ServidorOpc.Factories
 
         public  async Task<Session> CreateOpcUAConnection()
         {
-            var config = OpcUAFactoryConfig.CreacteOpcUAConfig();
+            var config = OpcUAFactoryConfig.CreateOpcUAConfig();
             var selectedEndpoint = new EndpointDescription(EndpointUrl);
 
             var endpoint = CoreClientUtils.SelectEndpoint(config, EndpointUrl, useSecurity: false);

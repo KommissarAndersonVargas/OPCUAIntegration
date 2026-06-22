@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            components = new System.ComponentModel.Container();
             btnConnect = new Button();
             label1 = new Label();
             lblVariableValue = new Label();
@@ -37,6 +38,7 @@
             columnOpcValue = new ColumnHeader();
             panel2 = new Panel();
             lblServerName = new Label();
+            modbusTimer = new System.Windows.Forms.Timer(components);
             panel1.SuspendLayout();
             panel2.SuspendLayout();
             SuspendLayout();
@@ -171,5 +173,6 @@
         private Panel panel2;
         private ColumnHeader columnOpcValue;
         private Label lblServerName;
+        private System.Windows.Forms.Timer modbusTimer;
     }
 }

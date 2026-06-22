@@ -4,26 +4,31 @@ namespace ServidorOpc.Factories
 {
     public class OpcUAFactoryConfig
     {
-        public static Opc.Ua.ApplicationConfiguration CreacteOpcUAConfig()
+        private static Opc.Ua.ApplicationConfiguration OpcConnection;
+
+        public static Opc.Ua.ApplicationConfiguration CreateOpcUAConfig()
         {
-            var opcUAConfig = new Opc.Ua.ApplicationConfiguration()
+            if(OpcConnection is null)
             {
-                ApplicationName = "MeuClienteOPC",
-                ApplicationType = ApplicationType.Client,
-
-                SecurityConfiguration = new SecurityConfiguration
+                OpcConnection = new Opc.Ua.ApplicationConfiguration()
                 {
-                    ApplicationCertificate = new CertificateIdentifier(),
-                    AutoAcceptUntrustedCertificates = true,
-                    RejectSHA1SignedCertificates = false
-                },
+                    ApplicationName = "MeuClienteOPC",
+                    ApplicationType = ApplicationType.Client,
 
-                TransportConfigurations = new TransportConfigurationCollection(),
-                TransportQuotas = new TransportQuotas(),
-                ClientConfiguration = new ClientConfiguration()
-            };
+                    SecurityConfiguration = new SecurityConfiguration
+                    {
+                        ApplicationCertificate = new CertificateIdentifier(),
+                        AutoAcceptUntrustedCertificates = true,
+                        RejectSHA1SignedCertificates = false
+                    },
 
-            return opcUAConfig;
+                    TransportConfigurations = new TransportConfigurationCollection(),
+                    TransportQuotas = new TransportQuotas(),
+                    ClientConfiguration = new ClientConfiguration()
+                };
+            }
+           
+            return OpcConnection;
         }
     }
 }
