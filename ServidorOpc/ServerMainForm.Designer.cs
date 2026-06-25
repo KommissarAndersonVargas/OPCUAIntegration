@@ -30,15 +30,19 @@
         {
             components = new System.ComponentModel.Container();
             btnConnect = new Button();
-            label1 = new Label();
+            lblVariable = new Label();
             lblVariableValue = new Label();
             panel1 = new Panel();
-            label2 = new Label();
+            lblClient = new Label();
             opcListView = new ListView();
             columnOpcValue = new ColumnHeader();
             panel2 = new Panel();
             lblServerName = new Label();
             modbusTimer = new System.Windows.Forms.Timer(components);
+            comboBoxSerialPorts = new ComboBox();
+            lblSerialPorts = new Label();
+            lblModBus = new Label();
+            radioBtnEnableModbus = new RadioButton();
             panel1.SuspendLayout();
             panel2.SuspendLayout();
             SuspendLayout();
@@ -56,16 +60,16 @@
             btnConnect.UseVisualStyleBackColor = true;
             btnConnect.Click += btnConnect_Click;
             // 
-            // label1
+            // lblVariable
             // 
-            label1.AutoSize = true;
-            label1.Font = new Font("Segoe UI", 9.75F, FontStyle.Bold);
-            label1.ForeColor = SystemColors.ButtonFace;
-            label1.Location = new Point(9, 237);
-            label1.Name = "label1";
-            label1.Size = new Size(119, 17);
-            label1.TabIndex = 3;
-            label1.Text = "Valor da variavel: ";
+            lblVariable.AutoSize = true;
+            lblVariable.Font = new Font("Segoe UI", 9.75F, FontStyle.Bold);
+            lblVariable.ForeColor = SystemColors.ButtonFace;
+            lblVariable.Location = new Point(9, 237);
+            lblVariable.Name = "lblVariable";
+            lblVariable.Size = new Size(119, 17);
+            lblVariable.TabIndex = 3;
+            lblVariable.Text = "Valor da variavel: ";
             // 
             // lblVariableValue
             // 
@@ -87,16 +91,16 @@
             panel1.Size = new Size(401, 91);
             panel1.TabIndex = 5;
             // 
-            // label2
+            // lblClient
             // 
-            label2.AutoSize = true;
-            label2.Font = new Font("Segoe UI", 9.75F, FontStyle.Bold);
-            label2.ForeColor = SystemColors.ButtonFace;
-            label2.Location = new Point(9, 268);
-            label2.Name = "label2";
-            label2.Size = new Size(59, 17);
-            label2.TabIndex = 6;
-            label2.Text = "Cliente: ";
+            lblClient.AutoSize = true;
+            lblClient.Font = new Font("Segoe UI", 9.75F, FontStyle.Bold);
+            lblClient.ForeColor = SystemColors.ButtonFace;
+            lblClient.Location = new Point(9, 268);
+            lblClient.Name = "lblClient";
+            lblClient.Size = new Size(59, 17);
+            lblClient.TabIndex = 6;
+            lblClient.Text = "Cliente: ";
             // 
             // opcListView
             // 
@@ -136,18 +140,63 @@
             lblServerName.TabIndex = 9;
             lblServerName.Text = "[valor_aqui]";
             // 
+            // comboBoxSerialPorts
+            // 
+            comboBoxSerialPorts.FormattingEnabled = true;
+            comboBoxSerialPorts.Location = new Point(74, 296);
+            comboBoxSerialPorts.Name = "comboBoxSerialPorts";
+            comboBoxSerialPorts.Size = new Size(154, 23);
+            comboBoxSerialPorts.TabIndex = 10;
+            // 
+            // lblSerialPorts
+            // 
+            lblSerialPorts.AutoSize = true;
+            lblSerialPorts.Font = new Font("Segoe UI", 9.75F, FontStyle.Bold);
+            lblSerialPorts.ForeColor = SystemColors.ButtonFace;
+            lblSerialPorts.Location = new Point(9, 296);
+            lblSerialPorts.Name = "lblSerialPorts";
+            lblSerialPorts.Size = new Size(55, 17);
+            lblSerialPorts.TabIndex = 11;
+            lblSerialPorts.Text = "Portas: ";
+            // 
+            // lblModBus
+            // 
+            lblModBus.AutoSize = true;
+            lblModBus.Font = new Font("Segoe UI", 9.75F, FontStyle.Bold);
+            lblModBus.ForeColor = SystemColors.ButtonFace;
+            lblModBus.Location = new Point(9, 323);
+            lblModBus.Name = "lblModBus";
+            lblModBus.Size = new Size(124, 17);
+            lblModBus.TabIndex = 12;
+            lblModBus.Text = "Habilitar Modbus: ";
+            // 
+            // radioBtnEnableModbus
+            // 
+            radioBtnEnableModbus.AutoSize = true;
+            radioBtnEnableModbus.Location = new Point(134, 323);
+            radioBtnEnableModbus.Name = "radioBtnEnableModbus";
+            radioBtnEnableModbus.Size = new Size(94, 19);
+            radioBtnEnableModbus.TabIndex = 13;
+            radioBtnEnableModbus.TabStop = true;
+            radioBtnEnableModbus.Text = "radioButton1";
+            radioBtnEnableModbus.UseVisualStyleBackColor = true;
+            // 
             // ServerMainForm
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = SystemColors.ActiveCaptionText;
             ClientSize = new Size(401, 450);
+            Controls.Add(radioBtnEnableModbus);
+            Controls.Add(lblModBus);
+            Controls.Add(lblSerialPorts);
+            Controls.Add(comboBoxSerialPorts);
             Controls.Add(lblServerName);
             Controls.Add(panel2);
-            Controls.Add(label2);
+            Controls.Add(lblClient);
             Controls.Add(panel1);
             Controls.Add(lblVariableValue);
-            Controls.Add(label1);
+            Controls.Add(lblVariable);
             ForeColor = SystemColors.ControlText;
             FormBorderStyle = FormBorderStyle.FixedSingle;
             MaximizeBox = false;
@@ -165,14 +214,18 @@
         #endregion
 
         private Button btnConnect;
-        private Label label1;
+        private Label lblVariable;
         private Label lblVariableValue;
         private Panel panel1;
-        private Label label2;
+        private Label lblClient;
         private ListView opcListView;
         private Panel panel2;
         private ColumnHeader columnOpcValue;
         private Label lblServerName;
         private System.Windows.Forms.Timer modbusTimer;
+        private ComboBox comboBoxSerialPorts;
+        private Label lblSerialPorts;
+        private Label lblModBus;
+        private RadioButton radioBtnEnableModbus;
     }
 }

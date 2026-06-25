@@ -5,9 +5,9 @@ namespace ServidorOpc.Factories
 {
     public class OpcConnection
     {
-        private string EndpointUrl = "opc.tcp://localhost:53530/OPCUA/SimulationServer";
+        private static string EndpointUrl = "opc.tcp://localhost:53530/OPCUA/SimulationServer";
 
-        public  async Task<Session> CreateOpcUAConnection()
+        public static async Task<Session> CreateOpcUAConnection()
         {
             var config = OpcUAFactoryConfig.CreateOpcUAConfig();
             var selectedEndpoint = new EndpointDescription(EndpointUrl);
@@ -19,7 +19,7 @@ namespace ServidorOpc.Factories
             return await Session.Create(config, configuredEndpoint, false, "ClienteOPC", 60000, new UserIdentity(new AnonymousIdentityToken()), null);
         }
 
-        public string GetClientName()
+        public static string GetClientName()
         {
             return EndpointUrl;
         }
