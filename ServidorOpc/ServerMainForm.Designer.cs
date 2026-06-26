@@ -56,7 +56,7 @@
             btnConnect.Name = "btnConnect";
             btnConnect.Size = new Size(275, 64);
             btnConnect.TabIndex = 0;
-            btnConnect.Text = "Conectar Servidor Opc";
+            btnConnect.Text = "Conectar Servidor OPC UA";
             btnConnect.UseVisualStyleBackColor = true;
             btnConnect.Click += btnConnect_Click;
             // 
@@ -143,7 +143,7 @@
             // comboBoxSerialPorts
             // 
             comboBoxSerialPorts.FormattingEnabled = true;
-            comboBoxSerialPorts.Location = new Point(74, 296);
+            comboBoxSerialPorts.Location = new Point(77, 322);
             comboBoxSerialPorts.Name = "comboBoxSerialPorts";
             comboBoxSerialPorts.Size = new Size(154, 23);
             comboBoxSerialPorts.TabIndex = 10;
@@ -153,7 +153,7 @@
             lblSerialPorts.AutoSize = true;
             lblSerialPorts.Font = new Font("Segoe UI", 9.75F, FontStyle.Bold);
             lblSerialPorts.ForeColor = SystemColors.ButtonFace;
-            lblSerialPorts.Location = new Point(9, 296);
+            lblSerialPorts.Location = new Point(12, 322);
             lblSerialPorts.Name = "lblSerialPorts";
             lblSerialPorts.Size = new Size(55, 17);
             lblSerialPorts.TabIndex = 11;
@@ -164,7 +164,7 @@
             lblModBus.AutoSize = true;
             lblModBus.Font = new Font("Segoe UI", 9.75F, FontStyle.Bold);
             lblModBus.ForeColor = SystemColors.ButtonFace;
-            lblModBus.Location = new Point(9, 323);
+            lblModBus.Location = new Point(12, 297);
             lblModBus.Name = "lblModBus";
             lblModBus.Size = new Size(124, 17);
             lblModBus.TabIndex = 12;
@@ -173,7 +173,7 @@
             // radioBtnEnableModbus
             // 
             radioBtnEnableModbus.AutoSize = true;
-            radioBtnEnableModbus.Location = new Point(134, 323);
+            radioBtnEnableModbus.Location = new Point(137, 297);
             radioBtnEnableModbus.Name = "radioBtnEnableModbus";
             radioBtnEnableModbus.Size = new Size(94, 19);
             radioBtnEnableModbus.TabIndex = 13;

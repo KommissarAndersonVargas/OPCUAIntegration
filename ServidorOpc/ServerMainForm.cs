@@ -13,6 +13,8 @@ namespace ServidorOpc
         private Subscription Subscription;
         private ModbusClient ModbusClient;
         private MonitoredItem MonitoredItemValue;
+        private readonly object modbusLock = new object();
+        private bool modbusBusy = false;
 
         public ServerMainForm()
         {
@@ -37,34 +39,73 @@ namespace ServidorOpc
         }
         public void ConfigureTimer()
         {
-            modbusTimer.Interval = 100;
+            modbusTimer.Interval = 3000;
             modbusTimer.Tick += ModbusTimer_Tick;
             modbusTimer.Start();
         }
 
         private void ConfigureModbus()
         {
-            ModbusClient = new ModbusClient(comboBoxSerialPorts.SelectedItem.ToString()); // ALTERAR se necessário
+            if (comboBoxSerialPorts.SelectedItem == null)
+            {
+                MessageBox.Show("Selecione uma porta COM");
+                return;
+            }
+
+
+            ModbusClient = new ModbusClient(
+                comboBoxSerialPorts.SelectedItem.ToString()
+            );
+
             ModbusClient.Baudrate = 9600;
-            ModbusClient.Parity = System.IO.Ports.Parity.None;
-            ModbusClient.StopBits = System.IO.Ports.StopBits.One;
-            ModbusClient.Connect();
+            ModbusClient.Parity = Parity.None;
+            ModbusClient.StopBits = StopBits.One;
+
+            try
+            {
+                ModbusClient.Connect();
+
+                MessageBox.Show("Modbus conectado");
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Erro Modbus: " + ex.Message);
+            }
         }
 
         private void ModbusTimer_Tick(object sender, EventArgs e)
         {
             try
             {
-                foreach (var value in MonitoredItemValue.DequeueValues())
-                {
-                    int passedValue = int.Parse(value.Value.ToString());
-                    ModbusClient.UnitIdentifier = 1;
-                    ModbusClient.WriteSingleRegister(0, passedValue);
-                }
-            }
+                if (ModbusClient == null || !ModbusClient.Connected)
+                    return;
 
-            catch(Exception) 
+
+                var values = MonitoredItemValue.DequeueValues();
+
+
+                foreach (var value in values)
+                {
+                    int valor = Convert.ToInt32(value.Value);
+
+
+                    lock (modbusLock)
+                    {
+                        ModbusClient.WriteSingleRegister(0, valor);
+                    }
+
+
+                    break;
+                }
+
+            }
+            catch (Exception ex)
             {
+                modbusTimer.Stop();
+
+                MessageBox.Show(
+                    "Falha Modbus:\n" + ex.ToString()
+                );
             }
         }
 

@@ -8,6 +8,16 @@ namespace ServidorOpc
         [STAThread]
         static void Main()
         {
+            Application.ThreadException += (sender, e) =>
+            {
+                Console.WriteLine();
+            };
+
+
+            AppDomain.CurrentDomain.UnhandledException += (sender, e) =>
+            {
+                Console.WriteLine();
+            };
             // To customize application configuration such as set high DPI settings or default font,
             // see https://aka.ms/applicationconfiguration.
             ApplicationConfiguration.Initialize();
