@@ -1,11 +1,10 @@
 {
   "version": 2,
-  "dgSpecHash": "cu1Z2o1tgDxpNn6sRHcqoETmdJvT/5r3tDicO6hooh8D2RmSh/AUJj6OPkb+C2iLZOh2qEDON5d+kzdGMOttVA==",
+  "dgSpecHash": "3BiEZ3ZgL69+/UF0Ymnzl8UUghGEovKCIoIARYwiPW9cddw5gaZomp3lXz/FWPzvK+ixpxeMMewuk79+CUcaqw==",
   "success": true,
   "projectFilePath": "C:\\Users\\Usuario\\source\\repos\\ServidorOpc\\ServidorOpc\\ServidorOpc.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\Usuario\\.nuget\\packages\\bitfaster.caching\\2.6.0\\bitfaster.caching.2.6.0.nupkg.sha512",
-    "C:\\Users\\Usuario\\.nuget\\packages\\easymodbustcp\\5.6.0\\easymodbustcp.5.6.0.nupkg.sha512",
     "C:\\Users\\Usuario\\.nuget\\packages\\microsoft.extensions.dependencyinjection\\10.0.8\\microsoft.extensions.dependencyinjection.10.0.8.nupkg.sha512",
     "C:\\Users\\Usuario\\.nuget\\packages\\microsoft.extensions.dependencyinjection.abstractions\\10.0.8\\microsoft.extensions.dependencyinjection.abstractions.10.0.8.nupkg.sha512",
     "C:\\Users\\Usuario\\.nuget\\packages\\microsoft.extensions.logging\\10.0.8\\microsoft.extensions.logging.10.0.8.nupkg.sha512",
@@ -13,6 +12,7 @@
     "C:\\Users\\Usuario\\.nuget\\packages\\microsoft.extensions.options\\10.0.8\\microsoft.extensions.options.10.0.8.nupkg.sha512",
     "C:\\Users\\Usuario\\.nuget\\packages\\microsoft.extensions.primitives\\10.0.8\\microsoft.extensions.primitives.10.0.8.nupkg.sha512",
     "C:\\Users\\Usuario\\.nuget\\packages\\newtonsoft.json\\13.0.4\\newtonsoft.json.13.0.4.nupkg.sha512",
+    "C:\\Users\\Usuario\\.nuget\\packages\\nmodbus4\\2.1.0\\nmodbus4.2.1.0.nupkg.sha512",
     "C:\\Users\\Usuario\\.nuget\\packages\\opcfoundation.netstandard.opc.ua.client\\1.5.378.145\\opcfoundation.netstandard.opc.ua.client.1.5.378.145.nupkg.sha512",
     "C:\\Users\\Usuario\\.nuget\\packages\\opcfoundation.netstandard.opc.ua.configuration\\1.5.378.145\\opcfoundation.netstandard.opc.ua.configuration.1.5.378.145.nupkg.sha512",
     "C:\\Users\\Usuario\\.nuget\\packages\\opcfoundation.netstandard.opc.ua.core\\1.5.378.145\\opcfoundation.netstandard.opc.ua.core.1.5.378.145.nupkg.sha512",
@@ -48,8 +48,8 @@
       "code": "NU1701",
       "level": "Warning",
       "warningLevel": 1,
-      "message": "O pacote 'EasyModbusTCP 5.6.0' foi restaurado usando '.NETFramework,Version=v4.6.1, .NETFramework,Version=v4.6.2, .NETFramework,Version=v4.7, .NETFramework,Version=v4.7.1, .NETFramework,Version=v4.7.2, .NETFramework,Version=v4.8, .NETFramework,Version=v4.8.1' em vez da estrutura de destino do projeto 'net8.0-windows7.0'. Esse pacote pode não ser totalmente compatível com o seu projeto.",
-      "libraryId": "EasyModbusTCP",
+      "message": "O pacote 'NModbus4 2.1.0' foi restaurado usando '.NETFramework,Version=v4.6.1, .NETFramework,Version=v4.6.2, .NETFramework,Version=v4.7, .NETFramework,Version=v4.7.1, .NETFramework,Version=v4.7.2, .NETFramework,Version=v4.8, .NETFramework,Version=v4.8.1' em vez da estrutura de destino do projeto 'net8.0-windows7.0'. Esse pacote pode não ser totalmente compatível com o seu projeto.",
+      "libraryId": "NModbus4",
       "targetGraphs": [
         "net8.0-windows7.0"
       ]

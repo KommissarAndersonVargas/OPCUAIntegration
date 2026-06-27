@@ -1,26 +1,32 @@
-﻿using EasyModbus;
-using Opc.Ua;
+﻿using Opc.Ua;
 using Opc.Ua.Client;
 using ServidorOpc.Factories;
 using System.IO.Ports;
-using static System.Windows.Forms.VisualStyles.VisualStyleElement;
+using Modbus.Device;
+
 
 namespace ServidorOpc
 {
     public partial class ServerMainForm : Form
     {
+
         private Session Session;
         private Subscription Subscription;
-        private ModbusClient ModbusClient;
         private MonitoredItem MonitoredItemValue;
+
+        // MODBUS NMODBUS4
+        private SerialPort serialPort;
+        private IModbusSerialMaster modbusMaster;
         private readonly object modbusLock = new object();
-        private bool modbusBusy = false;
+        private bool isSending = false; // evita sobreposição de envios
+
 
         public ServerMainForm()
         {
             InitializeComponent();
             LoadSerialPorts();
         }
+
         private void LoadSerialPorts()
         {
             string[] ports = SerialPort.GetPortNames();
@@ -37,75 +43,84 @@ namespace ServidorOpc
                 comboBoxSerialPorts.SelectedIndex = 0;
             }
         }
+
         public void ConfigureTimer()
         {
-            modbusTimer.Interval = 3000;
+            modbusTimer.Stop();
+            modbusTimer.Interval = 2000; // Arduino precisa de tempo para responder
+            modbusTimer.Tick -= ModbusTimer_Tick;
             modbusTimer.Tick += ModbusTimer_Tick;
             modbusTimer.Start();
         }
 
         private void ConfigureModbus()
         {
-            if (comboBoxSerialPorts.SelectedItem == null)
-            {
-                MessageBox.Show("Selecione uma porta COM");
-                return;
-            }
-
-
-            ModbusClient = new ModbusClient(
-                comboBoxSerialPorts.SelectedItem.ToString()
-            );
-
-            ModbusClient.Baudrate = 9600;
-            ModbusClient.Parity = Parity.None;
-            ModbusClient.StopBits = StopBits.One;
-
             try
             {
-                ModbusClient.Connect();
+                serialPort = new SerialPort(comboBoxSerialPorts.SelectedItem.ToString())
+                {
+                    BaudRate = 9600,
+                    DataBits = 8,
+                    Parity = Parity.None,
+                    StopBits = StopBits.One,
+                    ReadTimeout = 2000,
+                    WriteTimeout = 2000
+                };
 
-                MessageBox.Show("Modbus conectado");
+                serialPort.Open();
+
+                modbusMaster = ModbusSerialMaster.CreateRtu(serialPort);
+                modbusMaster.Transport.ReadTimeout = 2000;
+                modbusMaster.Transport.Retries = 1;
+
+                MessageBox.Show($"Modbus conectado em {serialPort.PortName}", "Modbus", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
             catch (Exception ex)
             {
-                MessageBox.Show("Erro Modbus: " + ex.Message);
+                MessageBox.Show($"Erro ao configurar Modbus: {ex.Message}", "Erro", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
 
-        private void ModbusTimer_Tick(object sender, EventArgs e)
+        private async void ModbusTimer_Tick(object sender, EventArgs e)
         {
+            if (isSending) 
+                return;
+
+            if (modbusMaster == null || serialPort == null || !serialPort.IsOpen)
+                return;
+
+            var values = MonitoredItemValue?.DequeueValues();
+
+            if (values == null || values.Count == 0)
+                return;
+
+            isSending = true;
+            modbusTimer.Stop();
+
             try
             {
-                if (ModbusClient == null || !ModbusClient.Connected)
-                    return;
+                var value = values.First();
+                ushort valorParaEnviar = Convert.ToUInt16(value.Value);
 
-
-                var values = MonitoredItemValue.DequeueValues();
-
-
-                foreach (var value in values)
+                await Task.Run(() =>
                 {
-                    int valor = Convert.ToInt32(value.Value);
-
-
                     lock (modbusLock)
                     {
-                        ModbusClient.WriteSingleRegister(0, valor);
+                        modbusMaster.WriteSingleRegister(1, 0, valorParaEnviar);
                     }
-
-
-                    break;
-                }
-
+                });
             }
             catch (Exception ex)
             {
-                modbusTimer.Stop();
-
-                MessageBox.Show(
-                    "Falha Modbus:\n" + ex.ToString()
-                );
+                this.Invoke((Action)(() =>
+                {
+                    MessageBox.Show("Falha Modbus:\n" + ex.Message, "Erro", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                }));
+            }
+            finally
+            {
+                isSending = false;
+                modbusTimer.Start();
             }
         }
 
@@ -117,19 +132,14 @@ namespace ServidorOpc
 
                 lblServerName.Text = OpcConnection.GetClientName();
 
-                MessageBox.Show("Conexão estabelecida",
-                    "Informação",
-                    MessageBoxButtons.OK,
-                    MessageBoxIcon.Information);
+                MessageBox.Show("Conexão estabelecida", "Informação", MessageBoxButtons.OK, MessageBoxIcon.Information);
 
                 IniciarMonitoramento();
                 EnableModbus();
             }
             catch (Exception ex)
             {
-                MessageBox.Show($"Erro ao tentar conectar {ex.Message}", "" +
-                    "Erro", MessageBoxButtons.OK,
-                    MessageBoxIcon.Information);
+                MessageBox.Show($"Erro ao tentar conectar {ex.Message}", "Erro", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
 
@@ -137,7 +147,7 @@ namespace ServidorOpc
         {
             if (radioBtnEnableModbus.Checked)
             {
-                ConfigureModbus(); // ALTERAR se necessário
+                ConfigureModbus();
                 ConfigureTimer();
             }
         }
@@ -145,12 +155,14 @@ namespace ServidorOpc
         private void IniciarMonitoramento()
         {
             Subscription = OpcUAFactoryConfig.GetSubscription(Session);
-            MonitoredItemValue = OpcUAFactoryConfig.GetMonitoration(Subscription); 
 
-            MonitoredItemValue.Notification += OnUpdateValue; //atribui um metodo a um event para atualizar o label do valor atual (não foi IA que escreveu)
+            MonitoredItemValue = OpcUAFactoryConfig.GetMonitoration(Subscription);
+            MonitoredItemValue.Notification += OnUpdateValue;
+
             Subscription.AddItem(MonitoredItemValue);
 
             Session.AddSubscription(Subscription);
+
             Subscription.Create();
         }
 
@@ -160,17 +172,37 @@ namespace ServidorOpc
             {
                 Invoke(() =>
                 {
-                    lblVariableValue.Text = $"{valor.Value}      --------- Time: {DateTime.Now}";
-                    opcListView.Items.Insert(0, $"{valor.Value}  --------- Time: {DateTime.Now}");
+                    lblVariableValue.Text = $"{valor.Value} ---- Time: {DateTime.Now}";
+                    opcListView.Items.Insert(0, $"{valor.Value} ---- Time: {DateTime.Now}");
                 });
             }
         }
-
         private void ServerMainForm_Load(object sender, EventArgs e)
         {
             opcListView.Columns.Clear();
             opcListView.Columns.Add("Opc Value", opcListView.Width - 4, HorizontalAlignment.Left);
-            lblServerName.Text = "Desconetado";
+
+            lblServerName.Text =
+                "Desconectado";
+        }
+
+
+        protected override void OnFormClosing(FormClosingEventArgs e)
+        {
+            try
+            {
+                modbusTimer.Stop();
+
+                if (serialPort != null &&
+                   serialPort.IsOpen)
+                {
+                    serialPort.Close();
+                }
+            }
+            catch
+            {
+            }
+            base.OnFormClosing(e);
         }
     }
 }
